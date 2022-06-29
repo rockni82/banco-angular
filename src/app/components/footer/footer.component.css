@@ -1,0 +1,34 @@
+.main-footer {
+    position: fixed;
+    background-color: black;
+    padding: 0.31rem;
+    margin-top: 1.25rem;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .main-footer__enlaces {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  
+  .main_footer__enlace {
+    display: inline-block;
+    margin: 0 1rem
+  }
+  
+  .main_footer__enlace a {
+    color: white;
+    font-size: 0.75rem;
+    text-decoration: none;
+  }
+  
+  .main_footer__enlace a:hover {
+    color: red;
+    font-size: 0.75rem;
+    text-decoration: none;
+  }
+  
