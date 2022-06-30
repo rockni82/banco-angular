@@ -1,45 +1,38 @@
 <aside class="main-aside">
 
-    <div class="main-aside__title">
-      Chat
+  <div class="main-aside__title">
+    Chat
+    <span class="main-aside__borrar" (click)="onBorrar()">🗑</span>
+  </div>
+
+  <div class="main-aside__mensajes">
+
+    <div
+      *ngFor="let mensaje of mensajes"
+      class="main-aside__mensaje">
+     {{mensaje.hora}} ({{mensaje.usuario}}): {{mensaje.mensaje}}
     </div>
 
-    <div class="main-aside__mensajes">
+  </div>
 
-      <div class="main-aside__mensaje">10:00 (Ana): Hola</div>
-      <div class="main-aside__mensaje">10:01 (Juan): Adiós</div>
-      <div class="main-aside__mensaje">10:00 (Ana): Hola</div>
-      <div class="main-aside__mensaje">10:01 (Juan): Adiós</div>
-      <div class="main-aside__mensaje">10:00 (Ana): Hola</div>
-      <div class="main-aside__mensaje">10:01 (Juan): Adiós</div>
-      <div class="main-aside__mensaje">10:01 (Juan): Adiós</div>
-      <div class="main-aside__mensaje">10:01 (Juan): Adiós</div>
-      <div class="main-aside__mensaje">10:01 (Juan): Adiós</div>
-      <div class="main-aside__mensaje">10:01 (Juan): Adiós</div>
-      <div class="main-aside__mensaje">10:01 (Juan): Adiós</div>
-      <div class="main-aside__mensaje">10:01 (Juan): Adiós</div>
-      <div class="main-aside__mensaje">10:01 (Juan): Adiós</div>
-      <div class="main-aside__mensaje">10:01 (Juan): Adiós</div>
-      <div class="main-aside__mensaje">10:01 (Juan): Adiós</div>
-      <div class="main-aside__mensaje">10:01 (Juan): Adiós</div>
-      <div class="main-aside__mensaje">10:01 (Juan): Adiós</div>
-      <div class="main-aside__mensaje">10:01 (Juan): Adiós</div>
-      <div class="main-aside__mensaje">10:01 (Juan): Adiós</div>
-      <div class="main-aside__mensaje">10:01 (Juan): Adiós</div>
+  <div class="main-aside__submit">
+
+    <div class="main-aside__submit-form">
+
+      <label for="mensaje"></label>
+      <input
+        (keyup)="onEnviarMensajeEnter($event, mensajeInput)"
+        #mensajeInput
+        type="text"
+        id="mensaje"
+        name="id">
+
+      <button (click)="onMensaje(mensajeInput)">
+        Enviar
+      </button>
 
     </div>
 
-    <div class="main-aside__submit">
+  </div>
 
-      <form class="main-aside__submit-form">
-
-        <label for="mensaje"></label>
-        <input type="text" id="mensaje" name="id">
-
-        <input type="submit" value="Enviar">
-
-      </form>
-      
-    </div>
-
-  </aside>
+</aside>
