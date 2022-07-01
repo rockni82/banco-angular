@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Respuesta } from '../modelos/respuesta';
 import { AuthService } from './auth.service';
+import { Gestor } from '../modelos/gestor';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BancoService {
+
+  private servidorBanco = 'http://localhost:4200/api';
 
   constructor(private authService: AuthService) { }
 
@@ -14,7 +17,7 @@ export class BancoService {
     password: string): Promise<boolean> {
 
     const response = await fetch(
-      'http://127.0.0.1:8085/login/gestor/', {
+      `${this.servidorBanco}/login/gestor/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -38,7 +41,7 @@ export class BancoService {
     password: string): Promise<boolean> {
 
     const response = await fetch(
-      'http://127.0.0.1:8085/login/cliente/', {
+      `${this.servidorBanco}/login/cliente/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -54,5 +57,40 @@ export class BancoService {
     }
 
     return datos.ok;
+  }
+
+  async obtenerGestores(): Promise<Gestor[]> {
+    return new Promise(async (resolve, reject) => {
+
+      const response = await fetch(
+        `${this.servidorBanco}/gestores/`, {
+          method: 'GET',
+          headers: {
+            'Authorization': `Basic ${localStorage.getItem('token')}`
+          }
+        }
+      );
+
+      const datos: Respuesta = await response.json();
+      const gestores: Gestor[] = datos.data;
+      resolve(gestores);
+    });
+  }
+
+  async eliminarGestor(id: number): Promise<boolean> {
+    return new Promise(async (resolve, reject) => {
+
+      const response = await fetch(
+        `${this.servidorBanco}/gestores/${id}`, {
+          method: 'DELETE',
+          headers: {
+            'Authorization': `Basic ${localStorage.getItem('token')}`
+          }
+        }
+      );
+
+      const datos: Respuesta = await response.json();
+      resolve(datos.ok);
+    });
   }
 }

@@ -5,12 +5,13 @@
   bottom: 0;
   right: 0;
   height: 60%;
+  background-color: antiquewhite;
 }
 
 .main-aside__title {
   width: 100%;
   text-align: center;
-  padding: 10px 0;
+  padding: 5px 0;
   background-color: #0e4f1f;
   color: white;
   font-weight: bold;

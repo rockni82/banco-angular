@@ -61,6 +61,7 @@
 }
 
 .main-nav__item_logout a {
+  cursor: pointer;
   color: white;
   background: #ff1b68;
   padding: 0.5rem 1rem;

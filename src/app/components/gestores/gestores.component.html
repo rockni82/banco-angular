@@ -1,0 +1,51 @@
+<main class="gestores-main">
+
+  <article class="gestores-article">
+    <h3>Gestores</h3>
+
+    <table class="comicGreen" id="gestores-article__table">
+      <thead>
+        <tr>
+          <th>Usuario</th>
+          <th>Email</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let gestor of gestores">
+          <td>{{gestor.usuario}}</td>
+          <td>{{gestor.correo}}</td>
+          <td
+            (click)="onEliminarGestor(gestor.id)"
+            class="clientes-eliminar">X
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </article>
+
+  <article class="gestores-article">
+    <h3>Insertar nuevo gestor</h3>
+
+    <form>
+
+      <div class="gesgestorestor-form__campo">
+        <label class="gestores-form__label" for="usuario">Usuario</label>
+        <input type="text" name="usuario" id="usuario">
+      </div>
+
+      <div class="gestores-form__campo">
+        <label class="gestores-form__label" for="password">Password</label>
+        <input type="text" name="password" id="password">
+      </div>
+
+      <div class="gestores-form__campo">
+        <label class="gestores-form__label" for="email">Email</label>
+        <input type="text" name="email" id="email">
+      </div>
+
+      <input class="gestores-form__submit" type="submit" value="Insertar">
+    </form>
+  </article>
+</main>
