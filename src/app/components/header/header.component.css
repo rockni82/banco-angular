@@ -1,14 +1,21 @@
+@media (max-width: 700px) {
+  .main-nav {
+    display: none;
+  }
+}
+
 .main-header {
   background-color: #2ddf5c;
   padding: 0.5rem 1rem;
   position: fixed;
   top: 0;
   width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .main-header > div {
-  display: inline-block;
-  vertical-align: middle;
+  flex-grow: 1;
 }
 
 .main-header__brand {
@@ -18,11 +25,15 @@
   font-size: 1.37rem;
 }
 
+.main-header__info {
+  font-weight: bold;
+  font-size: 0.8rem;
+  color: black;
+  font-family: 'Times New Roman', Times, serif;
+}
+
 .main-nav {
-  display: inline-block;
-  width: calc(100% - 38px);
-  text-align: right;
-  vertical-align: middle;
+  flex-grow: 0;
 }
 
 .main-nav__items {
