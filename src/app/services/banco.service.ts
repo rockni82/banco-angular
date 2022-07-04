@@ -1,7 +1,9 @@
+import { MensajeEnviado } from './../modelos/mensaje-enviado';
 import { Injectable } from '@angular/core';
 import { Respuesta } from '../modelos/respuesta';
 import { AuthService } from './auth.service';
 import { Gestor } from '../modelos/gestor';
+import { MensajeRecibido } from '../modelos/mensaje-recibido';
 
 @Injectable({
   providedIn: 'root'
@@ -77,6 +79,41 @@ export class BancoService {
     });
   }
 
+  async obtenerGestor(idOUsuario: number | string): Promise<Gestor> {
+    return new Promise(async (resolve, reject) => {
+
+      const response = await fetch(
+        `${this.servidorBanco}/gestores/${idOUsuario}`, {
+          method: 'GET',
+          headers: {
+            'Authorization': `Basic ${localStorage.getItem('token')}`
+          }
+        }
+      );
+
+      const datos: Respuesta = await response.json();
+      const gestor: Gestor = datos.data;
+      resolve(gestor);
+    });
+  }
+
+  async agregarGestor(gestor: Gestor): Promise<string> {
+    return new Promise(async (resolve, reject) => {
+      const response = await fetch(
+        `${this.servidorBanco}/gestores/`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Basic ${localStorage.getItem('token')}`
+          },
+          body: JSON.stringify(gestor)
+        }
+      );
+
+      const datos: Respuesta = await response.json();
+      resolve(datos.msg);
+    });
+  }
+
   async eliminarGestor(id: number): Promise<boolean> {
     return new Promise(async (resolve, reject) => {
 
@@ -91,6 +128,41 @@ export class BancoService {
 
       const datos: Respuesta = await response.json();
       resolve(datos.ok);
+    });
+  }
+
+  async enviarMensaje(mensaje: MensajeEnviado): Promise<string> {
+    return new Promise(async (resolve, reject) => {
+      const response = await fetch(
+        `${this.servidorBanco}/mensajes/`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Basic ${localStorage.getItem('token')}`
+          },
+          body: JSON.stringify(mensaje)
+        }
+      );
+
+      const datos: Respuesta = await response.json();
+      resolve(datos.msg);
+    });
+  }
+
+  async obtenerMensajesRecibidos(): Promise<MensajeRecibido[]> {
+    return new Promise(async (resolve, reject) => {
+
+      const response = await fetch(
+        `${this.servidorBanco}/mensajes/recibidos`, {
+          method: 'GET',
+          headers: {
+            'Authorization': `Basic ${localStorage.getItem('token')}`
+          }
+        }
+      );
+
+      const datos: Respuesta = await response.json();
+      const mensajes: MensajeRecibido[] = datos.data;
+      resolve(mensajes);
     });
   }
 }

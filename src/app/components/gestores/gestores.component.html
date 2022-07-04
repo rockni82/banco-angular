@@ -28,24 +28,31 @@
   <article class="gestores-article">
     <h3>Insertar nuevo gestor</h3>
 
-    <form>
+    <div>
 
-      <div class="gesgestorestor-form__campo">
+      <div class="gestorestor-form__campo">
         <label class="gestores-form__label" for="usuario">Usuario</label>
-        <input type="text" name="usuario" id="usuario">
+        <input #usuarioInput type="text" name="usuario" id="usuario">
       </div>
 
       <div class="gestores-form__campo">
         <label class="gestores-form__label" for="password">Password</label>
-        <input type="text" name="password" id="password">
+        <input #passwordInput type="password" name="password" id="password">
       </div>
 
       <div class="gestores-form__campo">
         <label class="gestores-form__label" for="email">Email</label>
-        <input type="text" name="email" id="email">
+        <input #emailInput type="text" name="email" id="email">
       </div>
 
-      <input class="gestores-form__submit" type="submit" value="Insertar">
-    </form>
+      <button
+        (click)="onAgregarGestor(usuarioInput, passwordInput,
+        emailInput)"
+        class="gestores-form__submit">
+
+        Insertar
+      </button>
+    </div>
+
   </article>
 </main>

@@ -1,4 +1,4 @@
-@media (max-width: 700px) {
+@media (max-width: 800px) {
   .main-nav {
     display: none;
   }
@@ -30,6 +30,11 @@
   font-size: 0.8rem;
   color: black;
   font-family: 'Times New Roman', Times, serif;
+}
+
+.main-header__usuario {
+  color: red;
+  padding-left: 0.5rem;
 }
 
 .main-nav {

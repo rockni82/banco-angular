@@ -47,6 +47,10 @@ export class HeaderComponent implements OnInit {
     }, 1000);
   }
 
+  obtenerUsuarioAutenticado(): string | null {
+    return localStorage.getItem('usuario');
+  }
+
   actualizarReloj() {
     const fechaActual = new Date();
 

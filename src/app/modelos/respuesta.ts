@@ -1,6 +1,5 @@
 export interface Respuesta {
-    ok: boolean;
-    msg: string;
-    data: any
-  }
-  
+  ok: boolean;
+  msg: string;
+  data: any
+}

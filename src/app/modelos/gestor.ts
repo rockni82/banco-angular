@@ -1,7 +1,6 @@
 export interface Gestor {
-    id: number;
-    usuario: string;
-    password: string;
-    correo: string;
-  };
-  
+  id: number;
+  usuario: string;
+  password: string;
+  correo: string;
+};

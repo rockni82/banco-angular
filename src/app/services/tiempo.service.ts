@@ -19,7 +19,7 @@ export class TiempoService {
       );
 
       const datos: RespuestaTiempo = await response.json();
-      resolve(datos)
+      resolve(datos);
     });
   }
 }
